@@ -1,8 +1,14 @@
-import React from "react";
-import Navigation from "./pages/navigation";
+import React from "react"
+import { Provider } from "react-redux"
+import Navigation from "./pages/navigation"
+import store from "./redux/store"
 
 function App() {
-  return <Navigation />
+  return (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+  )
 }
 
-export default App;
+export default App
