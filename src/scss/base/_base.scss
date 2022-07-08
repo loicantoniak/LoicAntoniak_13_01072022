@@ -1,0 +1,27 @@
+html,
+body {
+  font-family: $text-font, sans-serif;
+  color: $color-primary;
+  margin: 0;
+  background-color: $color-white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  font-weight: bold;
+  color: $color-primary;
+  text-decoration: none;
+}
+
+main {
+  flex: 1;
+}

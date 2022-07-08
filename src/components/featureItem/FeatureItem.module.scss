@@ -1,0 +1,22 @@
+@import '../../scss//utils/variables';
+
+.container {
+  flex: 1;
+  padding: 2.5rem;
+  text-align: center;
+
+  .icon {
+    width: 150px;
+    height: 150px;
+    border: 10px solid $color-secondary;
+    border-radius: 50%;
+    padding: 1rem;
+  }
+
+  .title {
+    color: $color-black;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+}

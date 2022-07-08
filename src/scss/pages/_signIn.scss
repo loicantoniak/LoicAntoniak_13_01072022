@@ -1,0 +1,54 @@
+.signin {
+  background-color: $bg-color;
+
+  &-content {
+    box-sizing: border-box;
+    background-color: $color-white;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    padding: 2rem;
+    text-align: center;
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    padding: 5px;
+    font-size: 1.2rem;
+  }
+}
+.input-remember {
+  display: flex;
+
+  label {
+    margin-left: -0.25rem;
+  }
+}
+
+.sign-in-button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: $color-secondary;
+  background-color: $color-secondary;
+  color: $color-white;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+}
