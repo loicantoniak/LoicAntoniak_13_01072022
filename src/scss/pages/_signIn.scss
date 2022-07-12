@@ -47,6 +47,11 @@
   color: $color-white;
   cursor: pointer;
   text-decoration: underline;
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
 }
 
 .error {

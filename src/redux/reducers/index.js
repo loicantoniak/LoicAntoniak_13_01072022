@@ -1,5 +1,5 @@
-import user from "./user"
+import auth from "./auth"
 
-const rootReducer = {user}
+const rootReducer = {auth}
 
 export default rootReducer

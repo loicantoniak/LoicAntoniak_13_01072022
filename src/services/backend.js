@@ -7,7 +7,6 @@ const apiV1 = "http://localhost:3001/api/v1"
 
 const auth = {
   async login(formData) {
-    console.log(formData)
     return await axios.post(`${apiV1}/user/login`, formData)
   },
 }

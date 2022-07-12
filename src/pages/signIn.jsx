@@ -4,6 +4,10 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
 import { Formik, Field, Form } from "formik"
 import * as yup from "yup"
 import backend from "../services/backend"
+import { useDispatch } from "react-redux"
+import { setCredentials } from "../redux/reducers/auth"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const initialValues = {
   email: "",
@@ -17,14 +21,19 @@ const signShema = yup.object().shape({
 })
 
 export default function signIn() {
-  async function handleSubmit(values, actions) {
-    try {
-      const res = await backend.auth.login(values)
-      actions.setSubmitting(false)
+  let navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [error, setError] = useState(false)
 
-      console.log(res)
+  async function handleSubmit(values, { setSubmitting }) {
+    try {
+      setSubmitting(false)
+      const res = await backend.auth.login(values)
+      dispatch(setCredentials({ user: values.email, accessToken: res.data.body.token }))
+      navigate("/user", { replace: true })
     } catch (error) {
-      actions.setSubmitting(false)
+      setSubmitting(false)
+      setError(true)
     }
   }
 
@@ -33,6 +42,8 @@ export default function signIn() {
       <section className="signin-content">
         <FontAwesomeIcon icon={faCircleUser} />
         <h1>Sign In</h1>
+
+        {error && <p className="error">Your username or your password is not valid</p>}
 
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={signShema}>
           {({ errors, touched, isSubmitting, isValid, dirty }) => (
