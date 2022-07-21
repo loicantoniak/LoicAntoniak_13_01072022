@@ -1,20 +1,23 @@
 // Utils
-@import './utils/variables';
-@import './utils/mixins';
-@import './utils/utilities';
+@import "./utils/variables";
+@import "./utils/mixins";
+@import "./utils/utilities";
 
 // Vendors
 
 // Base
-@import './base/base';
-@import './base/typography';
+@import "./base/base";
+@import "./base/typography";
 
 // Components
+@import "./components/button";
 
 // Layout
-@import './pages/home';
-@import './pages/signIn';
 
 // Pages
+@import "./pages/home";
+@import "./pages/signIn";
+@import "./pages/user"; 
+@import "./pages/nomatch"
 
 // Themes

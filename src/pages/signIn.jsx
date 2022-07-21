@@ -5,9 +5,9 @@ import { Formik, Field, Form } from "formik"
 import * as yup from "yup"
 import backend from "../services/backend"
 import { useDispatch } from "react-redux"
-import { setCredentials } from "../redux/reducers/auth"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { setCredentials } from "../redux/reducers/auth"
 
 const initialValues = {
   email: "",
@@ -15,9 +15,9 @@ const initialValues = {
   remember: false,
 }
 
-const signShema = yup.object().shape({
-  email: yup.string().email("L'adresse email n'est pas valide.").required("L'adresse email est requise."),
-  password: yup.string().required("Le mot de passe est requis."),
+const signSchema = yup.object().shape({
+  email: yup.string().email("Email is not valid").required("Email is required."),
+  password: yup.string().required("Password is required"),
 })
 
 export default function signIn() {
@@ -29,7 +29,7 @@ export default function signIn() {
     try {
       setSubmitting(false)
       const res = await backend.auth.login(values)
-      dispatch(setCredentials({ user: values.email, accessToken: res.data.body.token }))
+      dispatch(setCredentials(res.data.body.token))
       navigate("/user", { replace: true })
     } catch (error) {
       setSubmitting(false)
@@ -45,7 +45,7 @@ export default function signIn() {
 
         {error && <p className="error">Your username or your password is not valid</p>}
 
-        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={signShema}>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={signSchema}>
           {({ errors, touched, isSubmitting, isValid, dirty }) => (
             <Form>
               <div className="input-wrapper">
@@ -67,7 +67,7 @@ export default function signIn() {
                 </label>
               </div>
 
-              <button className="sign-in-button" disabled={!(dirty && !isSubmitting && isValid)}>
+              <button type="submit" className="button sign-in-button" disabled={!(dirty && !isSubmitting && isValid)}>
                 {isSubmitting ? "loading..." : "Sign In"}
               </button>
             </Form>

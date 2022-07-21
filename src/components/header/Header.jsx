@@ -1,17 +1,21 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import style from "./Header.module.scss"
+import { Link } from "react-router-dom"
+// Redux
+import { useDispatch, useSelector } from "react-redux"
+import { logout as logoutAuth } from "../../redux/reducers/auth"
+// Icons
 import logo from "../../assets/images/argentBankLogo.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
-import { useDispatch, useSelector } from "react-redux"
-import { logout, selectCurrentToken } from "../../redux/reducers/auth"
+import { logout } from "../../redux/reducers/user"
 
 export default function Header() {
-  const token = useSelector(selectCurrentToken)
+  const userName = useSelector((state) => state.user.firstName)
   const dispatch = useDispatch()
 
   function handleLogout() {
+    dispatch(logoutAuth())
     dispatch(logout())
   }
 
@@ -21,11 +25,11 @@ export default function Header() {
         <img src={logo} alt="Argent Bank Logo" />
       </Link>
       <div>
-        {token ? (
+        {userName ? (
           <>
             <Link to="user" className={style.navItem}>
               <FontAwesomeIcon icon={faCircleUser} />
-              Tony
+              {userName}
             </Link>
             <Link to="/" className={style.navItem} onClick={handleLogout}>
               <FontAwesomeIcon icon={faRightFromBracket} />

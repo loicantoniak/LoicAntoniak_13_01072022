@@ -1,0 +1,38 @@
+.button {
+  display: inline-block;
+  border-width: 2px;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-color: $color-secondary;
+  background-color: $color-secondary;
+  color: $color-white;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  min-width: 100px;
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+
+  &-secondary {
+    background-color: $grey1;
+    border-color: $grey1;
+  }
+}
+
+.sign-in-button {
+  width: 100%;
+  margin-top: 1rem;
+  text-decoration: underline;
+}
+
+.edit-button {
+  margin: auto;
+  font-size: 0.9rem;
+}
+
+.transaction-button {
+    width: 100%;
+    margin-top: 1rem;
+}

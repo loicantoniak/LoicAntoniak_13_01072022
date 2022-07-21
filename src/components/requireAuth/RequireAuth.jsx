@@ -1,8 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { useSelector } from "react-redux"
 import { Navigate, useLocation } from "react-router-dom"
-import { selectCurrentToken } from "../../redux/reducers/auth"
+import { useSelector } from "react-redux"
 
 RequireAuth.propTypes = {
   children: PropTypes.element,
@@ -13,7 +12,7 @@ RequireAuth.defaultProps = {
 }
 
 export default function RequireAuth({ children }) {
-  let token = useSelector(selectCurrentToken)
+  const token = useSelector(state => state.auth.token)
   let location = useLocation()
 
   if (!token) {

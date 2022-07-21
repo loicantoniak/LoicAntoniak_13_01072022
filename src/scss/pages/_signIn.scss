@@ -35,25 +35,7 @@
   }
 }
 
-.sign-in-button {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  border-color: $color-secondary;
-  background-color: $color-secondary;
-  color: $color-white;
-  cursor: pointer;
-  text-decoration: underline;
-
-  &:disabled {
-    opacity: 0.8;
-    cursor: not-allowed;
-  }
-}
-
 .error {
+  margin-top: 3px;
   color: red;
 }

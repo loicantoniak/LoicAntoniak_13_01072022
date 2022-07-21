@@ -1,0 +1,21 @@
+.no-match {
+  background-color: $bg-color;
+  color: $color-white;
+
+  h1,
+  p {
+    margin: auto;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 90px;
+  }
+
+  p {
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    font-size: 30px;
+    max-width: 30rem;
+  }
+}

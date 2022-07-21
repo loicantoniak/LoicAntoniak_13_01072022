@@ -11,8 +11,27 @@ const auth = {
   },
 }
 
+const user = {
+  async getUser(token) {
+    return await axios.post(`${apiV1}/user/profile`, "", {
+      headers: {
+        Authorization: "Bearer" + token,
+      },
+    })
+  },
+
+  async updateUserName(formData, token) {
+    return await axios.put(`${apiV1}/user/profile`, formData, {
+      headers: {
+        Authorization: "Bearer" + token,
+      },
+    })
+  },
+}
+
 const backend = {
   auth,
+  user,
 }
 
 export default backend

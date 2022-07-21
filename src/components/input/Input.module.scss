@@ -1,0 +1,23 @@
+@import "../../scss//utils/variables";
+@import "../../scss//utils/mixins";
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  @include breakpoint(desktop) {
+    flex-direction: row;
+  }
+
+  .inputWrapper {
+
+    input {
+      margin: 0 0.5rem;
+      padding: 5px;
+      font-size: 1.2rem;
+    }
+  }
+}
