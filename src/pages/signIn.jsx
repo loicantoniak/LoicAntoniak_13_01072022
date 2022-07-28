@@ -1,13 +1,17 @@
-import React from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Formik, Field, Form } from "formik"
 import * as yup from "yup"
 import backend from "../services/backend"
+import { useCookies } from "react-cookie"
+import { TOKEN_COOKIE } from "../lib/variables"
+// Redux
 import { useDispatch } from "react-redux"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { setCredentials } from "../redux/reducers/auth"
+import { setUser } from "../redux/reducers/user"
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
 
 const initialValues = {
   email: "",
@@ -24,13 +28,17 @@ export default function signIn() {
   let navigate = useNavigate()
   const dispatch = useDispatch()
   const [error, setError] = useState(false)
+  const [, setCookie] = useCookies([TOKEN_COOKIE])
 
   async function handleSubmit(values, { setSubmitting }) {
     try {
       setSubmitting(false)
       const res = await backend.auth.login(values)
+      const userData = await backend.user.getUser(res.data.body.token)
       dispatch(setCredentials(res.data.body.token))
-      navigate("/user", { replace: true })
+      dispatch(setUser(userData.data.body))
+      values["remember"] && setCookie(TOKEN_COOKIE, res.data.body.token, { path: "/" })
+      navigate("/profile", { replace: true })
     } catch (error) {
       setSubmitting(false)
       setError(true)

@@ -12,11 +12,12 @@ RequireAuth.defaultProps = {
 }
 
 export default function RequireAuth({ children }) {
-  const token = useSelector(state => state.auth.token)
+  const token = useSelector((state) => state.auth.token)
+
   let location = useLocation()
 
   if (!token) {
-    return <Navigate to="/signin" state={{ from: location }} replace />
+    return <Navigate to="/" state={{ from: location }} replace />
   }
 
   return children
