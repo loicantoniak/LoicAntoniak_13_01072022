@@ -4,7 +4,7 @@ import { Formik, Field, Form } from "formik"
 import * as yup from "yup"
 import backend from "../services/backend"
 import { useCookies } from "react-cookie"
-import { TOKEN_COOKIE } from "../lib/variables"
+import { EMAIL_COOKIE, TOKEN_COOKIE } from "../lib/variables"
 // Redux
 import { useDispatch } from "react-redux"
 import { setCredentials } from "../redux/reducers/auth"
@@ -12,12 +12,6 @@ import { setUser } from "../redux/reducers/user"
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
-
-const initialValues = {
-  email: "",
-  password: "",
-  remember: false,
-}
 
 const signSchema = yup.object().shape({
   email: yup.string().email("Email is not valid").required("Email is required."),
@@ -28,7 +22,13 @@ export default function signIn() {
   let navigate = useNavigate()
   const dispatch = useDispatch()
   const [error, setError] = useState(false)
-  const [, setCookie] = useCookies([TOKEN_COOKIE])
+  const [cookies, setCookie] = useCookies([TOKEN_COOKIE])
+
+  const initialValues = {
+    email: cookies[EMAIL_COOKIE] || "",
+    password: "",
+    remember: false,
+  }
 
   async function handleSubmit(values, { setSubmitting }) {
     try {
@@ -37,7 +37,8 @@ export default function signIn() {
       const userData = await backend.user.getUser(res.data.body.token)
       dispatch(setCredentials(res.data.body.token))
       dispatch(setUser(userData.data.body))
-      values["remember"] && setCookie(TOKEN_COOKIE, res.data.body.token, { path: "/" })
+      values["remember"] && setCookie(TOKEN_COOKIE, res.data.body.token, { path: "/", maxAge: 3600   })
+      setCookie(EMAIL_COOKIE, values.email)
       navigate("/profile", { replace: true })
     } catch (error) {
       setSubmitting(false)
