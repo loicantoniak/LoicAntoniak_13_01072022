@@ -1,11 +1,11 @@
 import React from "react"
-import PropTypes from "prop-types"
 import style from "./Input.module.scss"
+import PropTypes from "prop-types"
 import { Formik, Field, Form } from "formik"
 import * as yup from "yup"
-// import backend from "../services/backend"
-import { useDispatch, useSelector } from "react-redux"
 import backend from "../../services/backend"
+// Redux
+import { useDispatch, useSelector } from "react-redux"
 import { setUser } from "../../redux/reducers/user"
 
 Input.propTypes = {

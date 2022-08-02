@@ -16,14 +16,14 @@ import NoMatch from "./noMatch"
 import SignIn from "./signIn"
 import User from "./user"
 import RequireAuth from "../components/requireAuth/RequireAuth"
-
+import Account from "./account"
 
 export default function Navigation() {
   const token = useSelector((state) => state.auth.token)
   const [cookies] = useCookies([TOKEN_COOKIE])
   const dispatch = useDispatch()
 
-  // If there is an argentBankToken's cookie, fetch and update user 
+  // If there is an argentBankToken's cookie, fetch and update user
   useEffect(() => {
     if (!token && cookies[TOKEN_COOKIE] && cookies[TOKEN_COOKIE] != "undefined") {
       dispatch(setCredentials(cookies[TOKEN_COOKIE]))
@@ -45,6 +45,15 @@ export default function Navigation() {
           element={
             <RequireAuth>
               <User />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/account/:accountId"
+          element={
+            <RequireAuth>
+              <Account />
             </RequireAuth>
           }
         />

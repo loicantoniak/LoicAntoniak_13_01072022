@@ -1,15 +1,29 @@
-import React, { useState } from "react"
-// import backend from "../services/backend"
+import React, { useState, useEffect } from "react"
+import backend from "../services/backend"
 // Redux
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getName } from "../redux/reducers/user"
+import { setAccount } from "../redux/reducers/account"
 // Components
 import Account from "../components/account/Account"
 import Input from "../components/input/Input"
 
 export default function User() {
   const userName = useSelector((state) => getName(state))
+  const token = useSelector((state) => state.auth.token)
   const [editMode, setEditMode] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [accounts, setAccounts] = useState([])
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    backend.account
+      .getUserAccounts(token)
+      .then((res) => {
+        setAccounts(res.data.body), dispatch(setAccount(res.data.body)), setLoading(false)
+      })
+      .catch((err) => console.error(err))
+  }, [])
 
   return (
     <main className="user">
@@ -27,9 +41,19 @@ export default function User() {
           </button>
         )}
       </header>
-      <Account title="Argent Bank Checking (x8349)" amount={2082.79} description="Available Balance" />
-      <Account title="Argent Bank Savings (x6712)" amount={10928.42} description="Available Balance" />
-      <Account title="Argent Bank Credit Card (x8349)" amount={184.3} description="Current Balance" />
+
+      {loading
+        ? "loading..."
+        : accounts.map((account) => (
+            <Account
+              key={account._id}
+              id={account._id}
+              title={account.name}
+              number={account.number}
+              amount={account.balance}
+              description={account.description}
+            />
+          ))}
     </main>
   )
 }
