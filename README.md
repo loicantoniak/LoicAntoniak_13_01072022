@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# ArgentBank
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projet 13 de la formation OpenClassrooms "Développeur Front End".
+ArgentBank est une application bancaire.
 
-## Available Scripts
+<p align="center">
+    <img width="400" src="/src/assets/images/argentBankLogo.png" alt="logo ArgentBank">
+</p>
 
-In the project directory, you can run:
+## Objectif
 
-### `npm start`
+L'objectif de ce projet est : **Utilisez une API pour un compte utilisateur bancaire avec React**.
+Ma mission sur ce projet était la création d'une application web permettant aux clients de se connecter et de gérer leurs comptes et leur profil.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Réalisation 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Création de l’application web complète et responsive avec React.
+* Utilisation Redux pour gérer le state de l'ensemble de l'application.
+* Création d'un fichier YAML pour la description de l'API
+* Modification de l'API pour ajouter les transactions des comptes utilisateurs 
+* Use cases : 
+    * L'utilisateur peut visiter la page d'accueil
+    * L'utilisateur peut se connecter au système
+    * L'utilisateur peut se déconnecter du système
+    * L'utilisateur ne peut voir les informations relatives à son propre profil qu'après s'être connecté avec succès
+    * L'utilisateur peut modifier le profil et conserver les données dans la base de données. 
 
-### `npm test`
+## Fabriqué avec
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* [React](https://fr.reactjs.org/) - bibliothèque Javascript
+* [Redux](https://redux.js.org/) - Conteneur d'état
+* [React-Router](https://reactrouter.com/) - bibliothèque de gestion des routes pour React 
+* [Sass](https://sass-lang.com/) -  préprocesseur CSS (front-end)
+* [NPM](https://www.npmjs.com/) -  Gestionnaire de packages
+* [VSCode](https://code.visualstudio.com/) - Editeur de textes
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Utilisez le gestionnaire de packages [git](https://github.com/) pour télécharger l'application ArgentBank.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+$ git clone git@github.com:loicantoniak/LoicAntoniak_13_01072022.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+```bash
+$ cd argent_bank/
+$ npm install
+$ npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Exécute l'application en mode développement. Ouvrez http://localhost:3000 pour l'afficher dans le navigateur.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+La page se rechargera si vous apportez des modifications. Vous verrez également toutes les erreurs dans la console.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Pour obtenir une version de production faites :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+$ npm build
+```
 
-## Learn More
+## API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Le [projet](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) contenant tout le code source pour exécuter l'API pour argentBank.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Démo live : https://loicantoniak.github.io/LoicAntoniak_13_01072022/
 
-### Code Splitting
+## Compétences évaluées  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Implémenter un gestionnaire d'état dans une application React
+- Intéragir avec une API
+- Modéliser une API
+- S'authentifier à une API
 
-### Analyzing the Bundle Size
+## Auteur
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* **Loïc Antoniak** _alias_ [@loicantoniak](https://github.com/loicantoniak)
 
-### Making a Progressive Web App
+## Licence 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Il s'agit d'un projet dans le cadre de la formation [Développeur Front-End](https://openclassrooms.com/fr/paths/314-developpeur-front-end) d'OpenClassrooms. Les documents sont librement réutilisables, mais les images / logo et tout les éléments issus de l'énoncé ne m'appartiennent pas.

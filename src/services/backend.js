@@ -3,7 +3,9 @@ import Axios from "axios"
 
 const axios = Axios.create({ withCredentials: false })
 
-const apiV1 = "http://localhost:3001/api/v1"
+const apiV1 = process.env.REACT_APP_API_URL + "api/v1"
+
+console.log(apiV1)
 
 const auth = {
   async login(formData) {
