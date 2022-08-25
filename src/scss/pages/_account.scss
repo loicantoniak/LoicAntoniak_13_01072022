@@ -1,5 +1,6 @@
 .account {
   background-color: $bg-color;
+  padding-bottom: 5rem;
 
   header {
     background-color: $color-white;
@@ -23,6 +24,27 @@
     .account__description {
       margin: 0;
       font-size: 0.8rem;
+    }
+  }
+
+  &_transactions_header {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(10px, 260px));
+    margin: 8rem auto 0;
+    max-width: 70rem;
+    padding-left: 100px;
+
+
+    p {
+      text-transform: uppercase;
+      text-align: center;
+      color: $color-white;
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      &:first-of-type {
+        text-align: left;
+        padding-left: 46px;
+      }
     }
   }
 }

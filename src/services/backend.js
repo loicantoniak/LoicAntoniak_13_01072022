@@ -46,10 +46,29 @@ const account = {
   },
 }
 
+const transaction = {
+  async updateCategoryTransaction(token, transaction) {
+    return await axios.patch(`${apiV1}/transactions/${transaction._id}/category`, transaction, {
+      headers: {
+        Authorization: "Bearer" + token,
+      },
+    })
+  },
+
+  async updateCommentTransaction(token, transaction) {
+    return await axios.patch(`${apiV1}/transactions/${transaction._id}/comment`, transaction, {
+      headers: {
+        Authorization: "Bearer" + token,
+      },
+    })
+  },
+}
+
 const backend = {
   auth,
   user,
   account,
+  transaction,
 }
 
 export default backend

@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from "react"
 import backend from "../services/backend"
 import { useParams } from "react-router-dom"
-// Redux
-import { shallowEqual, useSelector } from "react-redux"
-import Transaction from "../components/transaction/Transaction"
 import { formatter } from "../lib/functions"
+// Redux
+import { shallowEqual, useDispatch, useSelector } from "react-redux"
+import { setTransaction } from "../redux/reducers/transaction"
 // Components
+import Transaction from "../components/transaction/Transaction"
 
 export default function Account() {
   const token = useSelector((state) => state.auth.token)
   const params = useParams()
   const account = useSelector((state) => state.account.find((a) => a._id === params.accountId), shallowEqual)
   const [loading, setLoading] = useState(true)
-  const [transactions, setTransactions] = useState([])
+  const transactions = useSelector((state) => state.transaction)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     backend.account
       .getAccountTransactions(token, params.accountId)
-      .then((res) => setTransactions(res.data.body), setLoading(false))
+      .then((res) => persistTransactions(res.data.body))
       .catch((err) => console.error(err))
+    setLoading(false)
   }, [])
+
+  function persistTransactions(trans) {
+    dispatch(setTransaction(trans))
+  }
 
   return (
     <main className="account">
@@ -29,7 +36,21 @@ export default function Account() {
         <p className="account__description">{account.description}</p>
       </header>
 
-      {loading ? "loading..." : transactions.map((transaction) => <Transaction key={transaction._id} />)}
+      {loading ? (
+        <span>loading...</span>
+      ) : (
+        <>
+          <div className="account_transactions_header">
+            <p>Date</p>
+            <p>Description</p>
+            <p>Amount</p>
+            <p>Balance</p>
+          </div>
+          {transactions.map((t) => (
+            <Transaction key={t._id} {...t} />
+          ))}
+        </>
+      )}
     </main>
   )
 }

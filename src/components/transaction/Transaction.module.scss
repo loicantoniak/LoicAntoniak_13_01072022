@@ -1,0 +1,45 @@
+@import "../../scss//utils/variables";
+@import "../../scss//utils/mixins";
+
+.container {
+  border: 1px solid $grey1;
+  margin: 0 auto;
+  background-color: $color-white;
+  max-width: 70rem;
+
+  .resume {
+    display: grid;
+    grid-template-columns: 100px repeat(4, minmax(10px, 260px));
+    align-items: center;
+    p {
+      text-align: center;
+      &:first-of-type {
+        text-align: left;
+      }
+    }
+
+    svg {
+      padding-left: 2rem;
+      cursor: pointer;
+    }
+  }
+
+  .info {
+    padding-left: 100px;
+    margin-bottom: 2rem;
+
+    svg {
+      margin: 0 0.5rem;
+      cursor: pointer;
+    }
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    input {
+      margin: 0.5rem;
+      padding: 0.5rem;
+    }
+  }
+}
