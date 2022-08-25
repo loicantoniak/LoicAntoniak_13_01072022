@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Routes, Route, BrowserRouter } from "react-router-dom"
+import { Routes, Route, HashRouter } from "react-router-dom";
 import { useCookies } from "react-cookie"
 import backend from "../services/backend"
 import { TOKEN_COOKIE } from "../lib/variables"
@@ -35,7 +35,7 @@ export default function Navigation() {
   }, [])
 
   return (
-    <BrowserRouter>
+    <HashRouter basename="/">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -61,6 +61,6 @@ export default function Navigation() {
         <Route path="*" element={<NoMatch />} />
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   )
 }

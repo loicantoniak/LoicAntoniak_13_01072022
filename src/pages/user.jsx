@@ -7,6 +7,7 @@ import { setAccount } from "../redux/reducers/account"
 // Components
 import Account from "../components/account/Account"
 import Input from "../components/input/Input"
+import Spinner from "../components/spinner/spinner"
 
 export default function User() {
   const userName = useSelector((state) => getName(state))
@@ -43,7 +44,7 @@ export default function User() {
       </header>
 
       {loading
-        ? "loading..."
+        ? <Spinner />
         : accounts.map((account) => (
             <Account
               key={account._id}

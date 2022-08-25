@@ -5,8 +5,6 @@ const axios = Axios.create({ withCredentials: false })
 
 const apiV1 = process.env.REACT_APP_API_URL + "api/v1"
 
-console.log(apiV1)
-
 const auth = {
   async login(formData) {
     return await axios.post(`${apiV1}/user/login`, formData)

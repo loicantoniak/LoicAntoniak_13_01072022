@@ -32,7 +32,7 @@ export default function signIn() {
 
   async function handleSubmit(values, { setSubmitting }) {
     try {
-      setSubmitting(false)
+      setSubmitting(true)
       const res = await backend.auth.login(values)
       const userData = await backend.user.getUser(res.data.body.token)
       dispatch(setCredentials(res.data.body.token))

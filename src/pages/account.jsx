@@ -7,6 +7,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { setTransaction } from "../redux/reducers/transaction"
 // Components
 import Transaction from "../components/transaction/Transaction"
+import Spinner from "../components/spinner/spinner"
 
 export default function Account() {
   const token = useSelector((state) => state.auth.token)
@@ -21,13 +22,13 @@ export default function Account() {
       .getAccountTransactions(token, params.accountId)
       .then((res) => persistTransactions(res.data.body))
       .catch((err) => console.error(err))
-    setLoading(false)
   }, [])
 
   function persistTransactions(trans) {
     dispatch(setTransaction(trans))
+    setLoading(false)
   }
-
+  
   return (
     <main className="account">
       <header>
@@ -37,7 +38,7 @@ export default function Account() {
       </header>
 
       {loading ? (
-        <span>loading...</span>
+        <Spinner />
       ) : (
         <>
           <div className="account_transactions_header">

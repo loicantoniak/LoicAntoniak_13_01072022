@@ -17,8 +17,6 @@ export default function Transaction(transaction) {
   const [open, setOpen] = useState(false)
   const [editMode, setEditMode] = useState({ category: false, comment: false })
 
-  console.log(transaction)
-
   function handleChangeEditMode(query, bool) {
     setEditMode((prev) => ({ ...prev, [query]: bool }))
   }
