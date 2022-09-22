@@ -18,6 +18,7 @@ Ma mission sur ce projet était la création d'une application web permettant au
 * Utilisation Redux pour gérer le state de l'ensemble de l'application.
 * Création d'un fichier YAML pour la description de l'API
 * Modification de l'API pour ajouter les transactions des comptes utilisateurs 
+* Ajout d'une fonctionnalité 'remember me' pour se souvenir du mot de passe utilisateur (utilisation des cookies)
 * Use cases : 
     * L'utilisateur peut visiter la page d'accueil
     * L'utilisateur peut se connecter au système
@@ -65,6 +66,8 @@ $ npm build
 Le [projet](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) contenant tout le code source pour exécuter l'API pour argentBank.
 
 Démo live : https://loicantoniak.github.io/LoicAntoniak_13_01072022/
+
+Identifiant test : tony@stark.com / password123
 
 ## Compétences évaluées  
 
