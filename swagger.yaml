@@ -74,6 +74,7 @@ paths:
       description: API for fetching a user profile
       parameters:
         - in: header
+          type: string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -97,6 +98,7 @@ paths:
       description: API for updating a user profile
       parameters:
         - in: header
+          type: string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -146,6 +148,7 @@ paths:
       description: API for fetching user accounts
       parameters:
         - in: header
+          type: string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -170,6 +173,7 @@ paths:
       description: API for fetching account transactions
       parameters:
         - in: header
+          type: string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -205,7 +209,7 @@ paths:
           description: Internal Server Error
 
   /transactions/:id:
-    get: 
+    post:
       security:
         - Bearer: []
       tags:
@@ -214,29 +218,7 @@ paths:
       description: get transaction
       parameters:
         - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Transaction retrieved successfully
-          schema:
-            $ref: "#/definitions/Transaction"
-        "400":
-          description: Invalid Fields
-        "500":
-          description: Internal Server Error
-    post: 
-      security:
-        - Bearer: []
-      tags:
-        - Transaction Module
-      summary: Transaction API
-      description: get transaction
-      parameters:
-        - in: header
+          type: string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -251,7 +233,7 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-      
+
   /transactions/:id/category:
     patch:
       security:
@@ -262,6 +244,7 @@ paths:
       description: API for updating transaction's category
       parameters:
         - in: header
+          type: string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -286,6 +269,7 @@ paths:
       description: API for updating transaction's comment
       parameters:
         - in: header
+          type: string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
