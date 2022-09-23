@@ -11,6 +11,7 @@ import { logout } from "../../redux/reducers/user"
 import logo from "../../assets/images/argentBankLogo.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
+import { setAccount } from "../../redux/reducers/account"
 
 export default function Header() {
   const userName = useSelector((state) => state.user.firstName)
@@ -20,6 +21,7 @@ export default function Header() {
   function handleLogout() {
     dispatch(logoutAuth())
     dispatch(logout())
+    dispatch(setAccount([]))
     removeCookie(TOKEN_COOKIE)
   }
 
